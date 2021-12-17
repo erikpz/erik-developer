@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Home: NextPage = () => {
   return (
     <div>
-      FRAMER
+      FRAMER MOTION
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 2 }}
