@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { globalStyles } from "./globalStyles";
 
-const FONT_FAMILY = '"LAto", sans-serif';
+const FONT_FAMILY = '"Lato", sans-serif';
 
 const palette: PaletteOptions = {
   common: { black: "#001633", white: "#F5F5F5" },
