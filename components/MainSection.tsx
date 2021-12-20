@@ -6,7 +6,7 @@ import Alien from "../assets/alien.jpg";
 
 const MainContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "lightblue",
-  minHeight: "calc(100vh-80px)",
+  minHeight: "calc(200vh-80px)",
 }));
 
 const TitleContainer = styled(Box)(({ theme }) => ({
@@ -14,12 +14,15 @@ const TitleContainer = styled(Box)(({ theme }) => ({
 }));
 
 const Photo = styled(Image)(({ theme }) => ({
-    width: 300,
-    height: 500,
-    borderRadius: 50,
-    outline: "2px solid #888",
-    outlineOffset: 15,
-    objectFit:'cover'
+  width: "100%",
+  height: "100%",
+  "& img": {
+    display: "block",
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+    borderRadius: 4,
+  },
 }));
 
 export const MainSection = () => {
@@ -33,18 +36,18 @@ export const MainSection = () => {
           wep diveloper
         </Typography>
       </TitleContainer>
-     {/*  <Box
+      <Box
         sx={{
           width: 300,
           height: 500,
           borderRadius: 50,
           outline: "2px solid #888",
           outlineOffset: 15,
-
+          overflow: "hidden",
         }}
-      > */}
-        <Photo src={Alien} alt="me" width={500} height={200}/>
-      {/* </Box> */}
+      >
+        <Image src={Alien} alt="me" />
+      </Box>
     </MainContainer>
   );
 };
