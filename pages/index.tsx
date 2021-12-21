@@ -8,6 +8,13 @@ import MainSection from "../components/MainSection";
 const HomeContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "whitesmoke",
   padding: "0px 70px",
+  width:'100%',
+  maxWidth:1400,
+  margin:'0 auto',
+  [theme.breakpoints.down(1000)]:{
+    padding: "0px 40px",
+
+  }
 }));
 
 const Home: NextPage = () => {

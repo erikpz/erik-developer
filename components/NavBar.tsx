@@ -1,8 +1,15 @@
 import React from "react";
-import { Box, Typography, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  IconButton,
+  useMediaQuery,
+  Theme,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { GitHub } from "@mui/icons-material";
 import Link from "next/link";
+import { BurguerButton } from "./BurguerButton";
 
 const NavBarContainer = styled(Box)(({ theme }) => ({
   /*  backgroundColor: "lightblue", */
@@ -11,6 +18,9 @@ const NavBarContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   position: "relative",
+  [theme.breakpoints.down(750)]: {
+    justifyContent: "flex-end",
+  },
 }));
 
 const LogoContainer = styled(Box)(({ theme }) => ({
@@ -22,6 +32,9 @@ const LogoContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
   left: 0,
   top: 0,
+  [theme.breakpoints.down(750)]: {
+    justifyContent: "flex-start",
+  },
 }));
 
 const Logo = styled(Box)(({ theme }) => ({
@@ -46,14 +59,19 @@ const NavLink = styled(Typography)(({ theme }) => ({
 }));
 
 export const NavBar = () => {
+  const under750 = useMediaQuery((theme: Theme) => theme.breakpoints.down(750));
   return (
     <NavBarContainer>
-      <Box sx={{ display: "flex" }}>
-        <Link href="#">
-          <NavLink>Trabajos</NavLink>
-        </Link>
-        <NavLink>Contacto</NavLink>
-      </Box>
+      {!under750 && (
+        <Box sx={{ display: "flex", zIndex: 1 }}>
+          <Link href="#">
+            <NavLink>Trabajos</NavLink>
+          </Link>
+          <Link href="#">
+            <NavLink>Contacto</NavLink>
+          </Link>
+        </Box>
+      )}
 
       <LogoContainer>
         <Logo>
@@ -62,13 +80,16 @@ export const NavBar = () => {
         </Logo>
       </LogoContainer>
 
-      <IconsContainer>
-        <a href="https://github.com/erikpz" target="_blank">
-          <IconButton size="small">
-            <GitHub sx={{ color: "text.primary" }} />
-          </IconButton>
-        </a>
-      </IconsContainer>
+      {!under750 && (
+        <IconsContainer>
+          <a href="https://github.com/erikpz" target="_blank">
+            <IconButton size="small">
+              <GitHub sx={{ color: "text.primary" }} />
+            </IconButton>
+          </a>
+        </IconsContainer>
+      )}
+      {under750 && <BurguerButton />}
     </NavBarContainer>
   );
 };
