@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, SetStateAction } from "react";
 import {
   Box,
   Typography,
@@ -11,6 +11,11 @@ import { GitHub } from "@mui/icons-material";
 import Link from "next/link";
 import { BurguerButton } from "./BurguerButton";
 
+interface NavBarProps {
+  open: boolean;
+  handleOpen: Function;
+}
+
 const NavBarContainer = styled(Box)(({ theme }) => ({
   /*  backgroundColor: "lightblue", */
   height: 80,
@@ -18,7 +23,7 @@ const NavBarContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   position: "relative",
-  [theme.breakpoints.down(750)]: {
+  [theme.breakpoints.down(800)]: {
     justifyContent: "flex-end",
   },
 }));
@@ -32,7 +37,7 @@ const LogoContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
   left: 0,
   top: 0,
-  [theme.breakpoints.down(750)]: {
+  [theme.breakpoints.down(800)]: {
     justifyContent: "flex-start",
   },
 }));
@@ -58,8 +63,9 @@ const NavLink = styled(Typography)(({ theme }) => ({
   "&:hover": { cursor: "pointer", textDecoration: "underline" },
 }));
 
-export const NavBar = () => {
-  const under750 = useMediaQuery((theme: Theme) => theme.breakpoints.down(750));
+export const NavBar: FC<NavBarProps> = (props) => {
+  const { open, handleOpen } = props;
+  const under750 = useMediaQuery((theme: Theme) => theme.breakpoints.down(800));
   return (
     <NavBarContainer>
       {!under750 && (
@@ -80,7 +86,7 @@ export const NavBar = () => {
         </Logo>
       </LogoContainer>
 
-      {!under750 && (
+      {!under750 ? (
         <IconsContainer>
           <a href="https://github.com/erikpz" target="_blank">
             <IconButton size="small">
@@ -88,8 +94,9 @@ export const NavBar = () => {
             </IconButton>
           </a>
         </IconsContainer>
+      ) : (
+        <BurguerButton open={open} handleOpen={handleOpen} />
       )}
-      {under750 && <BurguerButton />}
     </NavBarContainer>
   );
 };

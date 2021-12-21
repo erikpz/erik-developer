@@ -1,8 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const Burguer = styled(Box)(({ theme }) => ({
+interface BurguerButtonProps {
+  open: boolean;
+  handleOpen: Function;
+}
+
+const Burguer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<any>(({ theme, open }: any) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-around",
@@ -24,12 +31,23 @@ const Burguer = styled(Box)(({ theme }) => ({
     transition: "all 0.3s linear",
     position: "relative",
     transformOrigin: 1,
+    "&:first-of-type": {
+      transform: open ? "rotate(45deg)" : "rotate(0)",
+    },
+    "&:nth-of-type(2)": {
+      opacity: open ? 0 : 1,
+      transform: open ? "translateX(20px)" : "translateX(0)",
+    },
+    "&:nth-of-type(3)": {
+      transform: open ? "rotate(-45deg)" : "rotate(0)",
+    },
   },
 }));
 
-export const BurguerButton = () => {
+export const BurguerButton: FC<BurguerButtonProps> = (props) => {
+  const { open, handleOpen } = props;
   return (
-    <Burguer>
+    <Burguer open={open} onClick={() => handleOpen(!open)}>
       <Box />
       <Box />
       <Box />
