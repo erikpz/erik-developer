@@ -1,3 +1,4 @@
+import React, { createContext, useMemo, useState } from "react";
 import {
   createTheme,
   CssBaseline,
@@ -5,6 +6,7 @@ import {
   responsiveFontSizes,
   ThemeProvider,
   PaletteOptions,
+  PaletteMode,
 } from "@mui/material";
 import { globalStyles } from "./globalStyles";
 
@@ -19,19 +21,32 @@ const typography = {
   fontFamily: FONT_FAMILY,
 };
 
-export const ThemeConfig = ({ children }: any) => {
-  let theme = createTheme({
-    palette,
-    typography,
-  });
+export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
-  theme = responsiveFontSizes(theme);
+export const ThemeConfig = ({ children }: any) => {
+  const [mode, setmode] = useState<PaletteMode>("light");
+  const toggleColorMode = () => {
+    setmode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  };
+  let theme = useMemo(() => {
+    return responsiveFontSizes(
+      createTheme({
+        palette: {
+          mode,
+          ...palette,
+        },
+        typography,
+      })
+    );
+  }, [mode]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles styles={(theme) => globalStyles(theme)} />
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <ColorModeContext.Provider value={{ toggleColorMode }}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles styles={(theme) => globalStyles(theme)} />
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 };

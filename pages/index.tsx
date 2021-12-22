@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const HomeContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "whitesmoke",
-  padding: "0px 70px",
+  padding: "0px 50px",
   width: "100%",
   maxWidth: 1400,
   margin: "0 auto",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
@@ -10,8 +10,8 @@ const MainContainer = styled(Box)(({ theme }) => ({
 }));
 
 const TitleContainer = styled(Box)(({ theme }) => ({
-  marginTop: 40,
-  marginBottom: 60,
+  marginTop: 20,
+  marginBottom: 90,
 }));
 
 const BioContainer = styled(Box)(({ theme }) => ({
@@ -24,7 +24,7 @@ const ImageContainer = styled(Box)(({ theme }) => ({
   height: 450,
   boxSizing: "border-box",
   borderRadius: 500,
-  outline: "2px solid #888",
+  outline: "1px solid #888",
   outlineColor: theme.palette.grey[600],
   outlineOffset: 15,
   overflow: "hidden",
@@ -41,6 +41,32 @@ const ImageContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
+const BioText: FC<{ title: string; text: string; align: string }> = (props) => {
+  return (
+    <Box
+      sx={{
+        width: "30%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: props.align === "right" ? "flex-end" : "flex-start",
+        textAlign: props.align as any,
+      }}
+    >
+      <Typography
+        sx={{
+          textTransform: "uppercase",
+          marginBottom: 3,
+          color: (theme) => theme.palette.grey[600],
+        }}
+      >
+        {props.title}
+      </Typography>
+      <Typography sx={{ width: 160, fontWeight: 500 }}>{props.text}</Typography>
+    </Box>
+  );
+};
+
 export const MainSection = () => {
   return (
     <MainContainer>
@@ -54,57 +80,23 @@ export const MainSection = () => {
       </TitleContainer>
 
       <BioContainer>
-        <Box
-          sx={{
-            width: "30%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            sx={{
-              textTransform: "uppercase",
-              marginBottom: 3,
-              color: (theme) => theme.palette.grey[600],
-            }}
-          >
-            ¿Quién soy?
-          </Typography>
-          <Typography sx={{ width: 160, fontWeight: 500 }}>
-            Me llamo Erik, soy desarrollador web e ingeniero en sistemas
-            computacionales.
-          </Typography>
-        </Box>
+        <BioText
+          title="¿Quién soy?"
+          text="Me llamo Erik, soy desarrollador web e ingeniero en sistemas
+            computacionales."
+          align="left"
+        />
 
         <ImageContainer>
-          <Image src={Alien} />
+          <Image src={Alien} priority />
         </ImageContainer>
 
-        <Box
-          sx={{
-            width: "30%",
-            textAlign: "right",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "flex-end",
-          }}
-        >
-          <Typography
-            sx={{
-              textTransform: "uppercase",
-              marginBottom: 3,
-              color: (theme) => theme.palette.grey[600],
-            }}
-          >
-            Servicios
-          </Typography>
-          <Typography sx={{ width: 160, fontWeight: 500 }}>
-            Desarrollo de sitios y aplicaciones web adaptables a cualquier
-            dispositivo.
-          </Typography>
-        </Box>
+        <BioText
+          title="Servicios"
+          text="  Desarrollo de sitios y aplicaciones web adaptables a cualquier
+            dispositivo."
+          align="right"
+        />
       </BioContainer>
     </MainContainer>
   );

@@ -1,4 +1,4 @@
-import React, { FC, SetStateAction } from "react";
+import React, { FC, useContext } from "react";
 import {
   Box,
   Typography,
@@ -6,10 +6,11 @@ import {
   useMediaQuery,
   Theme,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { GitHub } from "@mui/icons-material";
+import { styled, useTheme } from "@mui/material/styles";
+import { GitHub, LightMode, Nightlight } from "@mui/icons-material";
 import Link from "next/link";
 import { BurguerButton } from "./BurguerButton";
+import { ColorModeContext } from "../theme/ThemeConfig";
 
 interface NavBarProps {
   open: boolean;
@@ -18,7 +19,7 @@ interface NavBarProps {
 
 const NavBarContainer = styled(Box)(({ theme }) => ({
   /*  backgroundColor: "lightblue", */
-  height: 80,
+  height: 150,
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -66,6 +67,8 @@ const NavLink = styled(Typography)(({ theme }) => ({
 export const NavBar: FC<NavBarProps> = (props) => {
   const { open, handleOpen } = props;
   const under750 = useMediaQuery((theme: Theme) => theme.breakpoints.down(800));
+  const colorMode = useContext(ColorModeContext);
+  const theme = useTheme();
   return (
     <NavBarContainer>
       {!under750 && (
@@ -93,6 +96,13 @@ export const NavBar: FC<NavBarProps> = (props) => {
               <GitHub sx={{ color: "text.primary" }} />
             </IconButton>
           </a>
+          <IconButton size="small" onClick={colorMode.toggleColorMode}>
+            {theme.palette.mode === "light" ? (
+              <Nightlight sx={{ color: "text.primary" }} />
+            ) : (
+              <LightMode sx={{ color: "text.primary" }} />
+            )}
+          </IconButton>
         </IconsContainer>
       ) : (
         <BurguerButton open={open} handleOpen={handleOpen} />
