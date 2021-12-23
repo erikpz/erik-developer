@@ -15,7 +15,7 @@ const FONT_FAMILY = '"Lato", sans-serif';
 
 const lightPalette: PaletteOptions = {
   common: { black: "#0a0908", white: "#F5F5F5" },
-  text: { primary: "#0a0908", secondary: "#0a0908" },
+  text: { primary: "#0a0908", secondary: "#1F1C19" },
   background: { default: "#F5F5F5", paper: "#F5F5F5" },
   divider: alpha("#001633", 0.3),
 };
