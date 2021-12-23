@@ -13,15 +13,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const TitleContainer = styled(Box)(({ theme }) => ({
   marginTop: 20,
   marginBottom: 70,
-  animation: "fade 2s linear 0s 1 alternate",
-  "@keyframes fade": {
-    "0%": {
-      opacity: 0,
-    },
-    "100%": {
-      opacity: 1,
-    },
-  },
+  animation: "fade 2s linear 0s 1 normal",
   [theme.breakpoints.down(750)]: {
     marginBottom: 50,
   },
@@ -30,6 +22,8 @@ const TitleContainer = styled(Box)(({ theme }) => ({
 const BioContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
+  animation: "fade 2s linear 0.5s 1 normal forwards",
+  opacity: 0,
   [theme.breakpoints.down(750)]: {
     flexDirection: "column",
     alignItems: "center",
@@ -138,6 +132,8 @@ export const MainSection = () => {
             alignItems: "center",
             columnGap: 5,
             filter: "grayscale(100%)",
+            opacity: 0,
+            animation: "fade 2s linear 0.8s 1 normal forwards",
           },
           (theme) => ({
             [theme.breakpoints.down(750)]: { marginTop: 5, columnGap: 3 },

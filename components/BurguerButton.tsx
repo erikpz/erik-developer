@@ -32,14 +32,14 @@ const Burguer = styled(Box, {
     position: "relative",
     transformOrigin: 1,
     "&:first-of-type": {
-      transform: open ? "rotate(47deg)" : "rotate(0)",
+      transform: open ? "rotate(45deg)" : "rotate(0)",
     },
     "&:nth-of-type(2)": {
       opacity: open ? 0 : 1,
       transform: open ? "translateX(20px)" : "translateX(0)",
     },
     "&:nth-of-type(3)": {
-      transform: open ? "rotate(-47deg)" : "rotate(0)",
+      transform: open ? "rotate(-45deg)" : "rotate(0)",
     },
   },
 }));

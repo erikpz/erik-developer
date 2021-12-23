@@ -7,3 +7,12 @@ body {
 * {
   box-sizing: border-box;
 }
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

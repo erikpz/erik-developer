@@ -126,7 +126,20 @@ export const NavBar: FC<NavBarProps> = (props) => {
           </a>
         </IconsContainer>
       ) : (
-        <BurguerButton open={open} handleOpen={handleOpen} />
+        <IconsContainer>
+          <IconButton
+            size="small"
+            onClick={colorMode.toggleColorMode}
+            sx={{ marginRight: 1 }}
+          >
+            {theme.palette.mode === "light" ? (
+              <DarkMode sx={{ color: "text.primary" }} />
+            ) : (
+              <LightMode sx={{ color: "text.primary" }} />
+            )}
+          </IconButton>
+          <BurguerButton open={open} handleOpen={handleOpen} />
+        </IconsContainer>
       )}
     </NavBarContainer>
   );
