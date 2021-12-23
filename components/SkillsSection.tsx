@@ -10,7 +10,7 @@ const SkillsContainer = styled(Box)(({ theme }) => ({
 export const SkillsSection = () => {
   return (
     <SkillsContainer>
-      <Typography>Habilidades</Typography>
+      <Typography align="center" variant="h2">Habilidades</Typography>
     </SkillsContainer>
   );
 };
