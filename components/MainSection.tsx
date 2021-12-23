@@ -105,6 +105,9 @@ export const MainSection = () => {
         <Typography variant="h2" align="center">
           Desarrollador Web
         </Typography>
+        <Typography variant="h2" align="center">
+          Ingeniero en Sistemas Computacionales
+        </Typography>
       </TitleContainer>
 
       <BioContainer>
