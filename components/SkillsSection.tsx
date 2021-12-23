@@ -77,7 +77,6 @@ const TechnologyCard = (props: any) => {
       <Box
         sx={[
           {
-            /* backgroundColor: "lightgreen", */
             width: 100,
             height: 100,
             borderRadius: 4,
