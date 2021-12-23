@@ -7,13 +7,16 @@ import MainSection from "../components/MainSection";
 import { useState } from "react";
 
 const HomeContainer = styled(Box)(({ theme }) => ({
-  backgroundColor: "whitesmoke",
+  backgroundColor: theme.palette.background.paper,
   padding: "0px 50px",
   width: "100%",
   maxWidth: 1400,
   margin: "0 auto",
-  [theme.breakpoints.down(1000)]: {
-    padding: "0px 40px",
+  [theme.breakpoints.down("md")]: {
+    padding: "0px 30px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "0px 20px",
   },
 }));
 

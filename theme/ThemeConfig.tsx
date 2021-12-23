@@ -12,9 +12,28 @@ import { globalStyles } from "./globalStyles";
 
 const FONT_FAMILY = '"Lato", sans-serif';
 
-const palette: PaletteOptions = {
-  common: { black: "#001633", white: "#F5F5F5" },
-  text: { primary: "#001633" },
+const lightPalette: PaletteOptions = {
+  common: { black: "#0a0908", white: "#F5F5F5" },
+  text: { primary: "#0a0908", secondary: "#0a0908" },
+  background: { default: "#F5F5F5", paper: "#F5F5F5" },
+  divider: "#001633",
+};
+
+const darkPalette: PaletteOptions = {
+  common: { black: "#0a0908", white: "#F5F5F5" },
+  text: { primary: "#F5F5F5", secondary: "#D2D2D2" },
+  background: { default: "#0a0908", paper: "#0a0908" },
+  divider: "#F5F5F5",
+};
+
+const breakpoints = {
+  values: {
+    xs: 0,
+    sm: 550,
+    md: 800,
+    lg: 1200,
+    xl: 1536,
+  },
 };
 
 const typography = {
@@ -25,17 +44,21 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 export const ThemeConfig = ({ children }: any) => {
   const [mode, setmode] = useState<PaletteMode>("light");
-  const toggleColorMode = () => {
-    setmode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-  };
+  const toggleColorMode = useMemo(
+    () => () => {
+      setmode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    },
+    []
+  );
   let theme = useMemo(() => {
     return responsiveFontSizes(
       createTheme({
         palette: {
           mode,
-          ...palette,
+          ...(mode === "light" ? lightPalette : darkPalette),
         },
         typography,
+        breakpoints,
       })
     );
   }, [mode]);

@@ -2,21 +2,38 @@ import React, { FC } from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
-import Alien from "../assets/alien.jpg";
+import alien from "../assets/alien.jpg";
+import ipn from "../assets/ipn.png";
 
 const MainContainer = styled(Box)(({ theme }) => ({
   /* backgroundColor: "lightblue", */
-  minHeight: "calc(100vh-80px)",
+  minHeight: "100vh",
 }));
 
 const TitleContainer = styled(Box)(({ theme }) => ({
   marginTop: 20,
-  marginBottom: 90,
+  marginBottom: 70,
+  animation: "fade 2s linear 0s 1 alternate",
+  "@keyframes fade": {
+    "0%": {
+      opacity: 0,
+    },
+    "100%": {
+      opacity: 1,
+    },
+  },
+  [theme.breakpoints.down(750)]: {
+    marginBottom: 50,
+  },
 }));
 
 const BioContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
+  [theme.breakpoints.down(750)]: {
+    flexDirection: "column",
+    alignItems: "center",
+  },
 }));
 
 const ImageContainer = styled(Box)(({ theme }) => ({
@@ -39,19 +56,30 @@ const ImageContainer = styled(Box)(({ theme }) => ({
     width: 250,
     height: 400,
   },
+  [theme.breakpoints.down(750)]: {
+    margin: "40px 0",
+  },
 }));
 
 const BioText: FC<{ title: string; text: string; align: string }> = (props) => {
   return (
     <Box
-      sx={{
-        width: "30%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: props.align === "right" ? "flex-end" : "flex-start",
-        textAlign: props.align as any,
-      }}
+      sx={[
+        {
+          width: "30%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: props.align === "right" ? "flex-end" : "flex-start",
+          textAlign: props.align as any,
+        },
+        (theme) => ({
+          [theme.breakpoints.down(750)]: {
+            alignItems: "center",
+            textAlign: "center",
+          },
+        }),
+      ]}
     >
       <Typography
         sx={{
@@ -88,7 +116,7 @@ export const MainSection = () => {
         />
 
         <ImageContainer>
-          <Image src={Alien} priority />
+          <Image src={alien} priority />
         </ImageContainer>
 
         <BioText
@@ -98,6 +126,22 @@ export const MainSection = () => {
           align="right"
         />
       </BioContainer>
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          columnGap:5,
+          filter:'grayscale(100%)'
+        }}
+      >
+        <Typography>Instituto Politécnico Nacional</Typography>
+        <Box sx={{ width: 60 }}>
+          <Image src={ipn} priority />
+        </Box>
+        <Typography>Escuela Superior de Cómputo</Typography>
+      </Box>
     </MainContainer>
   );
 };

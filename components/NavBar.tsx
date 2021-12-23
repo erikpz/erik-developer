@@ -7,7 +7,7 @@ import {
   Theme,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
-import { GitHub, LightMode, Nightlight } from "@mui/icons-material";
+import { DarkMode, GitHub, LightMode } from "@mui/icons-material";
 import Link from "next/link";
 import { BurguerButton } from "./BurguerButton";
 import { ColorModeContext } from "../theme/ThemeConfig";
@@ -19,12 +19,15 @@ interface NavBarProps {
 
 const NavBarContainer = styled(Box)(({ theme }) => ({
   /*  backgroundColor: "lightblue", */
-  height: 150,
+  height: 130,
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
   position: "relative",
-  [theme.breakpoints.down(800)]: {
+  [theme.breakpoints.down("md")]: {
+    height: 100,
+  },
+  [theme.breakpoints.down("sm")]: {
     justifyContent: "flex-end",
   },
 }));
@@ -38,7 +41,7 @@ const LogoContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
   left: 0,
   top: 0,
-  [theme.breakpoints.down(800)]: {
+  [theme.breakpoints.down("sm")]: {
     justifyContent: "flex-start",
   },
 }));
@@ -46,7 +49,7 @@ const LogoContainer = styled(Box)(({ theme }) => ({
 const Logo = styled(Box)(({ theme }) => ({
   borderWidth: 2,
   borderStyle: "solid",
-  borderColor: theme.palette.common.black,
+  borderColor: theme.palette.text.primary,
   textAlign: "center",
   padding: "5px 10px",
   "&:hover": { cursor: "pointer" },
@@ -66,12 +69,15 @@ const NavLink = styled(Typography)(({ theme }) => ({
 
 export const NavBar: FC<NavBarProps> = (props) => {
   const { open, handleOpen } = props;
-  const under750 = useMediaQuery((theme: Theme) => theme.breakpoints.down(800));
+  const underSmScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("sm")
+  );
   const colorMode = useContext(ColorModeContext);
   const theme = useTheme();
+  console.log(theme);
   return (
     <NavBarContainer>
-      {!under750 && (
+      {!underSmScreen && (
         <Box sx={{ display: "flex", zIndex: 1 }}>
           <Link href="#">
             <NavLink>Trabajos</NavLink>
@@ -89,20 +95,24 @@ export const NavBar: FC<NavBarProps> = (props) => {
         </Logo>
       </LogoContainer>
 
-      {!under750 ? (
+      {!underSmScreen ? (
         <IconsContainer>
-          <a href="https://github.com/erikpz" target="_blank">
-            <IconButton size="small">
-              <GitHub sx={{ color: "text.primary" }} />
-            </IconButton>
-          </a>
           <IconButton size="small" onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === "light" ? (
-              <Nightlight sx={{ color: "text.primary" }} />
+              <DarkMode sx={{ color: "text.primary" }} />
             ) : (
               <LightMode sx={{ color: "text.primary" }} />
             )}
           </IconButton>
+          <a
+            href="https://github.com/erikpz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconButton size="small">
+              <GitHub sx={{ color: "text.primary" }} />
+            </IconButton>
+          </a>
         </IconsContainer>
       ) : (
         <BurguerButton open={open} handleOpen={handleOpen} />
