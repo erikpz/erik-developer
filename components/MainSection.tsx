@@ -7,7 +7,7 @@ import ipn from "../assets/ipn.png";
 
 const MainContainer = styled(Box)(({ theme }) => ({
   /* backgroundColor: "lightblue", */
-  minHeight: "100vh",
+  /* minHeight: "100vh", */
 }));
 
 const TitleContainer = styled(Box)(({ theme }) => ({
@@ -103,7 +103,7 @@ export const MainSection = () => {
           Erik Pizaña
         </Typography>
         <Typography variant="h2" align="center">
-          wep diveloper
+          Desarrollador Web
         </Typography>
       </TitleContainer>
 
@@ -127,20 +127,38 @@ export const MainSection = () => {
         />
       </BioContainer>
       <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          columnGap:5,
-          filter:'grayscale(100%)'
-        }}
+        sx={[
+          {
+            marginTop: 8,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            columnGap: 5,
+            filter: "grayscale(100%)",
+          },
+          (theme) => ({
+            [theme.breakpoints.down(750)]: { marginTop: 5, columnGap: 3 },
+            [theme.breakpoints.down("sm")]: { columnGap: 2 },
+          }),
+        ]}
       >
-        <Typography>Instituto Politécnico Nacional</Typography>
-        <Box sx={{ width: 60 }}>
+        <Typography align="center" variant="caption" color="secondary">
+          Instituto Politécnico Nacional
+        </Typography>
+        <Box
+          sx={[
+            { width: 60 },
+            (theme) => ({
+              opacity: 0.8,
+              [theme.breakpoints.down(750)]: { width: 50 },
+            }),
+          ]}
+        >
           <Image src={ipn} priority />
         </Box>
-        <Typography>Escuela Superior de Cómputo</Typography>
+        <Typography align="center" variant="caption" color="secondary">
+          Escuela Superior de Cómputo
+        </Typography>
       </Box>
     </MainContainer>
   );

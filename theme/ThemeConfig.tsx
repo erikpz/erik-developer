@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import {
   createTheme,
   CssBaseline,
@@ -7,6 +7,7 @@ import {
   ThemeProvider,
   PaletteOptions,
   PaletteMode,
+  alpha,
 } from "@mui/material";
 import { globalStyles } from "./globalStyles";
 
@@ -16,14 +17,14 @@ const lightPalette: PaletteOptions = {
   common: { black: "#0a0908", white: "#F5F5F5" },
   text: { primary: "#0a0908", secondary: "#0a0908" },
   background: { default: "#F5F5F5", paper: "#F5F5F5" },
-  divider: "#001633",
+  divider: alpha("#001633", 0.3),
 };
 
 const darkPalette: PaletteOptions = {
   common: { black: "#0a0908", white: "#F5F5F5" },
   text: { primary: "#F5F5F5", secondary: "#D2D2D2" },
   background: { default: "#0a0908", paper: "#0a0908" },
-  divider: "#F5F5F5",
+  divider: alpha("#F5F5F5", 0.3),
 };
 
 const breakpoints = {
@@ -43,7 +44,8 @@ const typography = {
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 export const ThemeConfig = ({ children }: any) => {
-  const [mode, setmode] = useState<PaletteMode>("light");
+  /* const storageMode = localStorage.getItem("themeMode") as PaletteMode; */
+  const [mode, setmode] = useState<PaletteMode | null>();
   const toggleColorMode = useMemo(
     () => () => {
       setmode((prevMode) => (prevMode === "light" ? "dark" : "light"));
@@ -54,13 +56,24 @@ export const ThemeConfig = ({ children }: any) => {
     return responsiveFontSizes(
       createTheme({
         palette: {
-          mode,
+          mode: mode ?? "light",
           ...(mode === "light" ? lightPalette : darkPalette),
         },
         typography,
         breakpoints,
       })
     );
+  }, [mode]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("themeMode")) {
+      localStorage.setItem("themeMode", "light");
+    } else {
+      setmode(localStorage.getItem("themeMode") as any);
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("themeMode", mode ?? "light");
   }, [mode]);
 
   return (

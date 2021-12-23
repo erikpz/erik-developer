@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { NavBar } from "../components/NavBar";
-import { Box } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import MainSection from "../components/MainSection";
 import { useState } from "react";
+import SkillsSection from "../components/SkillsSection";
 
 const HomeContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -32,6 +33,8 @@ const Home: NextPage = () => {
       </Head>
       <NavBar open={openMenu} handleOpen={setopenMenu} />
       <MainSection />
+      <Divider sx={{ my: 15 }} />
+      <SkillsSection />
     </HomeContainer>
   );
 };
