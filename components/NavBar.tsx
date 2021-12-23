@@ -52,6 +52,7 @@ const Logo = styled(Box)(({ theme }) => ({
   borderColor: theme.palette.text.primary,
   textAlign: "center",
   padding: "5px 10px",
+  userSelect:'none',
   "&:hover": {
     cursor: "pointer",
     backgroundColor: theme.palette.text.primary,
