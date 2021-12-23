@@ -52,7 +52,11 @@ const Logo = styled(Box)(({ theme }) => ({
   borderColor: theme.palette.text.primary,
   textAlign: "center",
   padding: "5px 10px",
-  "&:hover": { cursor: "pointer" },
+  "&:hover": {
+    cursor: "pointer",
+    backgroundColor: theme.palette.text.primary,
+    color: theme.palette.background.paper,
+  },
 }));
 
 const IconsContainer = styled(Box)(({ theme }) => ({
@@ -62,9 +66,16 @@ const IconsContainer = styled(Box)(({ theme }) => ({
 
 const NavLink = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
-  margin: "0px 8px",
+  /* margin: "0px 8px", */
+  padding: "0 10px",
   lineHeight: "1.75",
-  "&:hover": { cursor: "pointer", textDecoration: "underline" },
+  "&:hover": {
+    cursor: "pointer",
+    backgroundColor: theme.palette.text.primary,
+    color: theme.palette.background.paper,
+    borderRadius: 20,
+    padding: "0 10px",
+  },
 }));
 
 export const NavBar: FC<NavBarProps> = (props) => {
@@ -90,8 +101,8 @@ export const NavBar: FC<NavBarProps> = (props) => {
 
       <LogoContainer>
         <Logo>
-          <Typography sx={{ fontWeight: 700 }}>PIZA</Typography>
-          <Typography sx={{ fontWeight: 700 }}>ÑA</Typography>
+          <Typography sx={{ fontWeight: 700 }}>EPC</Typography>
+          <Typography sx={{ fontWeight: 700 }}>DEV.</Typography>
         </Logo>
       </LogoContainer>
 

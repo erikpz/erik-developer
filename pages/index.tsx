@@ -33,7 +33,7 @@ const Home: NextPage = () => {
       </Head>
       <NavBar open={openMenu} handleOpen={setopenMenu} />
       <MainSection />
-      <Divider sx={{ my: 10 }} />
+      <Divider sx={{ my: {xs:6,md:9} }} />
       <SkillsSection />
     </HomeContainer>
   );

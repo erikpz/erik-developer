@@ -25,7 +25,7 @@ const Burguer = styled(Box, {
   },
   "& div": {
     width: "2rem",
-    height: "0.25rem",
+    height: "0.1rem",
     background: theme.palette.text.primary,
     borderRadius: 10,
     transition: "all 0.3s linear",
