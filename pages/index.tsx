@@ -36,8 +36,8 @@ const Home: NextPage = () => {
     barRef.current.style.width = scrolled + "%";
   };
   useEffect(() => {
-    globalThis.addEventListener("scroll", doProgress);
-    return globalThis.removeEventListener("scroll", doProgress);
+    document.addEventListener("scroll", doProgress);
+    return document.removeEventListener("scroll", doProgress);
   }, []);
   return (
     <HomeContainer>
