@@ -52,11 +52,17 @@ const Logo = styled(Box)(({ theme }) => ({
   borderColor: theme.palette.text.primary,
   textAlign: "center",
   padding: "5px 10px",
-  userSelect:'none',
+  userSelect: "none",
   "&:hover": {
     cursor: "pointer",
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.background.paper,
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "3px 8px",
+    "& p": {
+      fontSize: 12,
+    },
   },
 }));
 
