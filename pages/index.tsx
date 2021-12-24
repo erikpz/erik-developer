@@ -7,6 +7,7 @@ import MainSection from "../components/MainSection";
 import { useState } from "react";
 import SkillsSection from "../components/SkillsSection";
 import { ExperienceSection } from "../components/ExperienceSection";
+import { Footer } from "../components/Footer";
 
 const HomeContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -39,6 +40,7 @@ const Home: NextPage = () => {
       <Divider sx={{ my: { xs: 6, md: 9 } }} />
       <ExperienceSection />
       <Divider sx={{ my: { xs: 6, md: 9 } }} />
+      <Footer />
     </HomeContainer>
   );
 };

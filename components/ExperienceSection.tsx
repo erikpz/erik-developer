@@ -14,7 +14,7 @@ export const ExperienceSection = () => {
       <Typography
         align="center"
         variant="h2"
-        sx={{ marginBottom: { xs: 5, sm: 9 } }}
+        sx={{ marginBottom: { xs: 3, sm: 9 } }}
       >
         Educación y Experiencia
       </Typography>
