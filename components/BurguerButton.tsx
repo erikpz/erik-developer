@@ -19,7 +19,7 @@ const Burguer = styled(Box, {
   border: "none",
   cursor: "pointer",
   padding: 0,
-  zIndex: 1000,
+  zIndex: 100,
   "&:focus": {
     outline: "none",
   },

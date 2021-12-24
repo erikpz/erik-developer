@@ -92,9 +92,8 @@ export const NavBar: FC<NavBarProps> = (props) => {
   );
   const colorMode = useContext(ColorModeContext);
   const theme = useTheme();
-  console.log(theme);
   return (
-    <NavBarContainer id='erikdev'>
+    <NavBarContainer id="erikdev">
       {!underSmScreen && (
         <Box sx={{ display: "flex", zIndex: 1 }}>
           <Link href="#">

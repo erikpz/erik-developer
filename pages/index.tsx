@@ -4,7 +4,7 @@ import { NavBar } from "../components/NavBar";
 import { Box, Divider } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import MainSection from "../components/MainSection";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SkillsSection from "../components/SkillsSection";
 import { ExperienceSection } from "../components/ExperienceSection";
 import { Footer } from "../components/Footer";
@@ -25,6 +25,20 @@ const HomeContainer = styled(Box)(({ theme }) => ({
 
 const Home: NextPage = () => {
   const [openMenu, setopenMenu] = useState(false);
+  const barRef = useRef<any>(null);
+  const doProgress = () => {
+    let winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    let height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    let scrolled = (winScroll / height) * 100;
+    barRef.current.style.width = scrolled + "%";
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", doProgress);
+    return window.removeEventListener("scroll", doProgress);
+  }, []);
   return (
     <HomeContainer>
       <Head>
@@ -33,6 +47,25 @@ const Home: NextPage = () => {
           rel="stylesheet"
         />
       </Head>
+      <Box
+        sx={{
+          width: "100%",
+          height: "5px",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 50,
+        }}
+      >
+        <Box
+          ref={barRef}
+          sx={(theme) => ({
+            height: "100%",
+            backgroundColor: theme.palette.text.primary,
+            width: "0%",
+          })}
+        ></Box>
+      </Box>
       <NavBar open={openMenu} handleOpen={setopenMenu} />
       <MainSection />
       <Divider sx={{ my: { xs: 6, md: 9 } }} />
