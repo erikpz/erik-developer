@@ -94,13 +94,13 @@ export const NavBar: FC<NavBarProps> = (props) => {
   const theme = useTheme();
   console.log(theme);
   return (
-    <NavBarContainer>
+    <NavBarContainer id='erikdev'>
       {!underSmScreen && (
         <Box sx={{ display: "flex", zIndex: 1 }}>
           <Link href="#">
             <NavLink>Trabajos</NavLink>
           </Link>
-          <Link href="#">
+          <Link href="#contact">
             <NavLink>Contacto</NavLink>
           </Link>
         </Box>

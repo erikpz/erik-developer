@@ -1,6 +1,7 @@
 import React from "react";
 import { GitHub } from "@mui/icons-material";
 import { Box, IconButton, styled, Typography } from "@mui/material";
+import Link from "next/link";
 
 const FooterContainer = styled(Box)(({ theme }) => ({
   /* backgroundColor: "lightblue", */
@@ -29,8 +30,12 @@ const IconsContainer = styled(Box)(({ theme }) => ({
 
 export const Footer = () => {
   return (
-    <FooterContainer>
-      <Typography>Erik Pizaña Dev.</Typography>
+    <FooterContainer id="contact">
+      <Link href="#erikdev">
+        <Typography sx={{ "&:hover": { cursor: "pointer" } }}>
+          Erik Pizaña Dev.
+        </Typography>
+      </Link>
       <Typography>erik@kaantechnologies.com</Typography>
       <IconsContainer>
         <a
