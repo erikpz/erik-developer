@@ -81,11 +81,13 @@ const LogoContainer = styled(Box, {
   shouldForwardProp: (props) => props !== "delay",
 })<any>(({ theme, delay }: any) => ({
   width: "50%",
-  borderRadius: 4,
   overflow: "hidden",
   transition: "0.3s transform",
   filter: "grayscale(100%)",
-  animation: `heart 4s ease-in ${delay}ms infinite alternate`,
+  animation: `heart 2s ease-in ${delay}ms infinite alternate`,
+  "& img":{
+    borderRadius: 15,
+  },
   [theme.breakpoints.down("lg")]: {
     width: "50%",
   },
