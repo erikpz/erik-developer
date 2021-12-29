@@ -118,8 +118,7 @@ export const MainSection = () => {
 
         <BioText
           title="Servicios"
-          text="  Desarrollo de sitios y aplicaciones web adaptables a cualquier
-            dispositivo."
+          text="  Desarrollo aplicaciones web."
           align="right"
         />
       </BioContainer>

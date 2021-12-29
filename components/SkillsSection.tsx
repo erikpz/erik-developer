@@ -42,67 +42,71 @@ const SkillsContainer = styled(Box)(({ theme }) => ({
   /* minHeight: "100vh", */
 }));
 
+const CardContainer = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "light" ? "#D2D2D2" : "#1F1C19",
+  height: 200,
+  width: "100%",
+  maxWidth: 150,
+  borderRadius: 1000,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  "&:hover": {
+    cursor: "pointer",
+    "& div": {
+      transform: "scale(1.2)",
+      filter: "grayscale(0%)",
+    },
+  },
+  [theme.breakpoints.down("lg")]: {
+    height: 170,
+    maxWidth: 120,
+  },
+  [theme.breakpoints.down("sm")]: {
+    height: 130,
+    maxWidth: 90,
+  },
+}));
+
+const LogoContainer = styled(Box)(({ theme }) => ({
+  width: "50%",
+  borderRadius: 4,
+  overflow: "hidden",
+  transition: "0.3s",
+  filter: "grayscale(100%)",
+  [theme.breakpoints.down("lg")]: {
+    width: "50%",
+  },
+}));
+
+const TechsContainer = styled(Box)(({ theme }) => ({
+  /* backgroundColor: "lightblue", */
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  gap: 12,
+}));
+
 const TechnologyCard = (props: any) => {
   return (
-    <Box
-      sx={[
-        {
-          backgroundColor: (theme) =>
-            theme.palette.mode === "light" ? "#D2D2D2" : "#1F1C19",
-          height: 250,
-          width: "100%",
-          maxWidth: 190,
-          margin: "auto",
-          borderRadius: 50,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          "&:hover": {
-            cursor: "pointer",
-            "& div": {
-              transform: "scale(1.2)",
-              filter: "grayscale(0%)",
-            },
-          },
-        },
-        (theme) => ({
-          [theme.breakpoints.down("md")]: {
-            height: 230,
-            maxWidth: 160,
-          },
-        }),
-      ]}
-    >
-      <Box
-        sx={[
-          {
-            width: 100,
-            height: 100,
-            borderRadius: 4,
-            overflow: "hidden",
-            transition: "0.3s",
-            filter: "grayscale(100%)",
-          },
-          (theme) => ({
-            [theme.breakpoints.down("md")]: {
-              width: 80,
-              height: 80,
-            },
-          }),
-        ]}
-      >
+    <CardContainer>
+      <LogoContainer>
         <Image alt="tech" src={props.tech.icon} priority />
-      </Box>
+      </LogoContainer>
       <Typography
         variant="subtitle1"
         align="center"
         color={grey[600]}
-        sx={{ textTransform: "uppercase", mt: { xs: 3, sm: 3, md: 4 } }}
+        sx={{
+          textTransform: "uppercase",
+          mt: { xs: 1, md: 3 },
+          fontSize: { xs: 11, sm: 12, md: 13 },
+        }}
       >
         {props.tech.name}
       </Typography>
-    </Box>
+    </CardContainer>
   );
 };
 
@@ -116,18 +120,11 @@ export const SkillsSection = () => {
       >
         Habilidades
       </Typography>
-      <Grid
-        container
-        spacing={3}
-        justifyContent="center"
-        sx={{ marginBottom: 8 }}
-      >
+      <TechsContainer>
         {techs.map((tech: any) => (
-          <Grid item xs={6} sm={3} md={3} lg={2} key={tech.name}>
-            <TechnologyCard tech={tech} />
-          </Grid>
+          <TechnologyCard tech={tech} key={tech.name} />
         ))}
-      </Grid>
+      </TechsContainer>
     </SkillsContainer>
   );
 };
