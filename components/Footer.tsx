@@ -13,6 +13,7 @@ const FooterContainer = styled(Box)(({ theme }) => ({
     width: 200,
   },
   [theme.breakpoints.down("sm")]: {
+    paddingBottom: 70,
     flexDirection: "column",
     alignItems: "center",
     "& p": { textAlign: "center" },
@@ -23,7 +24,7 @@ const FooterContainer = styled(Box)(({ theme }) => ({
 const IconsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent:'flex-end',
+  justifyContent: "flex-end",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
     alignItems: "center",

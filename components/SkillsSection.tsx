@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import { grey } from "@mui/material/colors";
@@ -37,6 +37,14 @@ const techs = [
   { icon: gitlab, name: "Gitlab" },
 ];
 
+const animationDelays = (length: number) => {
+  let delays: number[] = [];
+  for (let i = 0; i < length; i++) {
+    delays = [...delays, Math.floor(Math.random() * (length * 300 - 0.1))];
+  }
+  return delays;
+};
+
 const SkillsContainer = styled(Box)(({ theme }) => ({
   /* backgroundColor: "lightblue", */
   /* minHeight: "100vh", */
@@ -69,12 +77,15 @@ const CardContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-const LogoContainer = styled(Box)(({ theme }) => ({
+const LogoContainer = styled(Box, {
+  shouldForwardProp: (props) => props !== "delay",
+})<any>(({ theme, delay }: any) => ({
   width: "50%",
   borderRadius: 4,
   overflow: "hidden",
-  transition: "0.3s",
+  transition: "0.3s transform",
   filter: "grayscale(100%)",
+  animation: `heart 4s ease-in ${delay}ms infinite alternate`,
   [theme.breakpoints.down("lg")]: {
     width: "50%",
   },
@@ -91,7 +102,7 @@ const TechsContainer = styled(Box)(({ theme }) => ({
 const TechnologyCard = (props: any) => {
   return (
     <CardContainer>
-      <LogoContainer>
+      <LogoContainer delay={props.delay}>
         <Image alt="tech" src={props.tech.icon} priority />
       </LogoContainer>
       <Typography
@@ -111,6 +122,12 @@ const TechnologyCard = (props: any) => {
 };
 
 export const SkillsSection = () => {
+  const [delays, setdelays] = useState<number[]>([]);
+
+  useEffect(() => {
+    setdelays(animationDelays(techs.length));
+  }, []);
+
   return (
     <SkillsContainer>
       <Typography
@@ -121,8 +138,8 @@ export const SkillsSection = () => {
         Habilidades
       </Typography>
       <TechsContainer>
-        {techs.map((tech: any) => (
-          <TechnologyCard tech={tech} key={tech.name} />
+        {techs.map((tech: any, i: number) => (
+          <TechnologyCard delay={delays[i]} tech={tech} key={tech.name} />
         ))}
       </TechsContainer>
     </SkillsContainer>
