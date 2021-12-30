@@ -10,7 +10,7 @@ interface MenuProps {
 const MenuContainer = styled(Box, {
   shouldForwardProp: (props) => props !== "open",
 })<any>(({ theme, open }: any) => ({
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.palette.background.paper,
   position: "fixed",
   top: 0,
   left: 0,
@@ -35,7 +35,12 @@ export const Menu: FC<MenuProps> = (props) => {
     <MenuContainer open={props.open}>
       <Link href="#">
         <Typography
-          sx={{ fontSize: 20, mb: 4 }}
+          sx={{
+            fontSize: 20,
+            mb: 4,
+            opacity: 0,
+            animation: "fade 700ms linear 1s 1 normal forwards",
+          }}
           onClick={() => props.handleOpen(false)}
         >
           Trabajos
@@ -43,7 +48,12 @@ export const Menu: FC<MenuProps> = (props) => {
       </Link>
       <Link href="#contact">
         <Typography
-          sx={{ fontSize: 20, mb: 4 }}
+          sx={{
+            fontSize: 20,
+            mb: 4,
+            opacity: 0,
+            animation: "fade 700ms linear 1s 1 normal forwards",
+          }}
           onClick={() => props.handleOpen(false)}
         >
           Contacto
