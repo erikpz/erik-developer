@@ -21,6 +21,15 @@ html {
   }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes heart {
   from {
     transform: scale(1);
