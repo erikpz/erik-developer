@@ -67,13 +67,13 @@ export const ThemeConfig = ({ children }: any) => {
 
   useEffect(() => {
     if (!localStorage.getItem("themeMode")) {
-      localStorage.setItem("themeMode", "light");
+      localStorage.setItem("themeMode", "dark");
     } else {
       setmode(localStorage.getItem("themeMode") as any);
     }
   }, []);
   useEffect(() => {
-    localStorage.setItem("themeMode", mode ?? "light");
+    localStorage.setItem("themeMode", mode ?? "dark");
   }, [mode]);
 
   return (
