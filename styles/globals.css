@@ -32,11 +32,9 @@ html {
 
 @keyframes heart {
   from {
-    transform: scale(1);
     filter: grayscale(100%);
   }
   to {
-    transform: scale(1.2);
     filter: grayscale(0%);
   }
 }

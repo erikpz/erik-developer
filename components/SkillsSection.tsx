@@ -84,12 +84,12 @@ const LogoContainer = styled(Box, {
   overflow: "hidden",
   transition: "0.3s transform",
   filter: "grayscale(100%)",
-  animation: `heart 2s ease-in ${delay}ms infinite alternate`,
+  animation: `heart 2.5s linear ${delay}ms infinite alternate`,
   "& img":{
-    borderRadius: 15,
+    borderRadius: 8,
   },
   [theme.breakpoints.down("lg")]: {
-    width: "50%",
+    width: "55%",
   },
 }));
 
