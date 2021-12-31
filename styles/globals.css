@@ -38,3 +38,26 @@ html {
     filter: grayscale(0%);
   }
 }
+
+.works-container-light .swiper-pagination-bullet-active {
+  background-color: #f5f5f5 !important;
+}
+
+.works-container-dark .swiper-pagination-bullet-active {
+  background-color: #0a0908 !important;
+}
+
+.works-container-light .swiper-pagination-bullet-active-next,
+.swiper-pagination-bullet-active-prev,
+.swiper-pagination-bullet-active-prev-prev,
+.swiper-pagination-bullet-active-next-next {
+  background-color: #d2d2d2 !important;
+  opacity: 0.7;
+}
+.works-container-dark .swiper-pagination-bullet-active-next,
+.swiper-pagination-bullet-active-prev,
+.swiper-pagination-bullet-active-prev-prev,
+.swiper-pagination-bullet-active-next-next {
+  background-color: #d2d2d2 !important;
+  opacity: 0.7;
+}

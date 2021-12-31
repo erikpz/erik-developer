@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
@@ -36,7 +36,7 @@ const ImageContainer = styled(Box)(({ theme }) => ({
   "&:hover": {
     filter: "grayscale(0%)",
     "& img": {
-      transform: "scale(1.2)",
+      transform: "scale(1.1)",
     },
   },
 }));
@@ -98,8 +98,16 @@ const works = [
 ];
 
 export const WorksSection = () => {
+  const theme = useTheme();
   return (
-    <WorksContainer id="works">
+    <WorksContainer
+      id="works"
+      className={
+        theme.palette.mode !== "light"
+          ? "works-container-light"
+          : "works-container-dark"
+      }
+    >
       <Typography
         align="center"
         variant="h2"
