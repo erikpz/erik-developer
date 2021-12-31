@@ -64,8 +64,8 @@ export const ThemeConfig = ({ children }: any) => {
         components: {
           MuiCssBaseline: {
             styleOverrides: `
-              body{
-                transition: all 700ms;
+              * {
+                transition: background-color 500ms;
               }
             `,
           },

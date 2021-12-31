@@ -96,7 +96,7 @@ export const NavBar: FC<NavBarProps> = (props) => {
     <NavBarContainer id="erikdev">
       {!underSmScreen && (
         <Box sx={{ display: "flex", zIndex: 1 }}>
-          <Link href="#">
+          <Link href="#works">
             <NavLink>Trabajos</NavLink>
           </Link>
           <Link href="#contact">

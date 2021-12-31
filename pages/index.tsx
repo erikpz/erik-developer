@@ -10,6 +10,7 @@ import { ExperienceSection } from "../components/ExperienceSection";
 import { Footer } from "../components/Footer";
 import ProgressBar from "../components/ProgressBar";
 import { Menu } from "../components/Menu";
+import { WorksSection } from "../components/WorksSection";
 
 const HomeContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
       setopenMenu(false);
     }
   }, [smScreen]);
-  
+
   return (
     <HomeContainer>
       <Head>
@@ -52,6 +53,8 @@ const Home: NextPage = () => {
       <SkillsSection />
       <Divider sx={{ my: { xs: 6, md: 9 } }} />
       <ExperienceSection />
+      <Divider sx={{ my: { xs: 6, md: 9 } }} />
+      <WorksSection />
       <Divider sx={{ my: { xs: 6, md: 9 } }} />
       <Footer />
     </HomeContainer>

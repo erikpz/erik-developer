@@ -13,7 +13,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const TitleContainer = styled(Box)(({ theme }) => ({
   marginTop: 20,
   marginBottom: 70,
-  animation: "fade 2s linear 700ms 1 normal",
+  animation: "fade 1.5s linear 400ms 1 normal",
   [theme.breakpoints.down(750)]: {
     marginBottom: 50,
   },
@@ -22,7 +22,7 @@ const TitleContainer = styled(Box)(({ theme }) => ({
 const BioContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
-  animation: "fade 2s linear 1s 1 normal forwards",
+  animation: "fade 1.5s linear 600ms normal forwards",
   opacity: 0,
   [theme.breakpoints.down(750)]: {
     flexDirection: "column",
