@@ -61,6 +61,15 @@ export const ThemeConfig = ({ children }: any) => {
         },
         typography,
         breakpoints,
+        components: {
+          MuiCssBaseline: {
+            styleOverrides: `
+              body{
+                transition: all 700ms;
+              }
+            `,
+          },
+        },
       })
     );
   }, [mode]);

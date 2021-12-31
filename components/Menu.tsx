@@ -39,7 +39,7 @@ export const Menu: FC<MenuProps> = (props) => {
             fontSize: 20,
             mb: 4,
             opacity: 0,
-            animation: "fade 700ms linear 1s 1 normal forwards",
+            animation: "fade 700ms linear 600ms 1 normal forwards",
           }}
           onClick={() => props.handleOpen(false)}
         >
@@ -52,7 +52,7 @@ export const Menu: FC<MenuProps> = (props) => {
             fontSize: 20,
             mb: 4,
             opacity: 0,
-            animation: "fade 700ms linear 1s 1 normal forwards",
+            animation: "fade 700ms linear 600ms 1 normal forwards",
           }}
           onClick={() => props.handleOpen(false)}
         >
