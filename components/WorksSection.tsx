@@ -5,13 +5,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
 import Image from "next/image";
 import leviajere from "../assets/leviajere.png";
+import portfolio from "../assets/portfolio.png";
+import kaan from "../assets/kaan.png";
+import glapp from "../assets/glapp.png";
 import "swiper/css";
 import "swiper/css/pagination";
 
 SwiperCore.use([Pagination]);
 
 const WorksContainer = styled(Box)(({ theme }) => ({
-/*   backgroundColor: "lightblue", */
+  /*   backgroundColor: "lightblue", */
 }));
 
 const ImageContainer = styled(Box)(({ theme }) => ({
@@ -71,8 +74,25 @@ const WorkSlide: FC<WorkSlideProps> = (props) => {
 const works = [
   {
     img: leviajere,
-    href: "https://leviajere.z20.web.core.windows.net/",
+    href: "https://leviajere.z20.web.core.windows.net",
     title: "Le Viajere App",
+    subtitle: "Landing page",
+  },
+  {
+    img: kaan,
+    href: "https://www.kaantechnologies.com/",
+    title: "Ka'an Technologies",
+    subtitle: "Landing page",
+  },
+  {
+    img: glapp,
+    title: "Glapp",
+    subtitle: "Web application",
+  },
+  {
+    img: portfolio,
+    href: "https://erik-developer.vercel.app",
+    title: "Erik's Portfolio",
     subtitle: "Landing page",
   },
 ];
@@ -97,7 +117,7 @@ export const WorksSection = () => {
         {works.map((w: any) => (
           <SwiperSlide>
             <WorkSlide
-              key={w.href}
+              key={w.title}
               img={w.img}
               href={w.href}
               title={w.title}
