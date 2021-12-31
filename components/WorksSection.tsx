@@ -11,6 +11,32 @@ import glapp from "../assets/glapp.png";
 import "swiper/css";
 import "swiper/css/pagination";
 
+const works = [
+  {
+    img: leviajere,
+    href: "https://leviajere.z20.web.core.windows.net",
+    title: "Le Viajere App",
+    subtitle: "Landing page",
+  },
+  {
+    img: kaan,
+    href: "https://www.kaantechnologies.com/",
+    title: "Ka'an Technologies",
+    subtitle: "Landing page",
+  },
+  {
+    img: glapp,
+    title: "Glapp",
+    subtitle: "Web application",
+  },
+  {
+    img: portfolio,
+    href: "https://erik-developer.vercel.app",
+    title: "Erik's Portfolio",
+    subtitle: "Landing page",
+  },
+];
+
 SwiperCore.use([Pagination]);
 
 const WorksContainer = styled(Box)(({ theme }) => ({
@@ -18,10 +44,11 @@ const WorksContainer = styled(Box)(({ theme }) => ({
 }));
 
 const ImageContainer = styled(Box)(({ theme }) => ({
-  width: 400,
-  height: 400,
+  width: 350,
+  height: 350,
   overflow: "hidden",
   borderRadius: 20,
+  margin: "auto",
   filter: "grayscale(100%)",
   transition: "all 500ms",
   "& span": {
@@ -71,32 +98,6 @@ const WorkSlide: FC<WorkSlideProps> = (props) => {
   );
 };
 
-const works = [
-  {
-    img: leviajere,
-    href: "https://leviajere.z20.web.core.windows.net",
-    title: "Le Viajere App",
-    subtitle: "Landing page",
-  },
-  {
-    img: kaan,
-    href: "https://www.kaantechnologies.com/",
-    title: "Ka'an Technologies",
-    subtitle: "Landing page",
-  },
-  {
-    img: glapp,
-    title: "Glapp",
-    subtitle: "Web application",
-  },
-  {
-    img: portfolio,
-    href: "https://erik-developer.vercel.app",
-    title: "Erik's Portfolio",
-    subtitle: "Landing page",
-  },
-];
-
 export const WorksSection = () => {
   const theme = useTheme();
   return (
@@ -123,9 +124,8 @@ export const WorksSection = () => {
         loop={true}
       >
         {works.map((w: any) => (
-          <SwiperSlide>
+          <SwiperSlide key={w.title}>
             <WorkSlide
-              key={w.title}
               img={w.img}
               href={w.href}
               title={w.title}
