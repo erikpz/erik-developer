@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Pagination } from "swiper";
+import SwiperCore, { Pagination, Autoplay } from "swiper";
 import Image from "next/image";
 import leviajere from "../assets/leviajere.png";
 import portfolio from "../assets/portfolio.png";
@@ -37,7 +37,7 @@ const works = [
   },
 ];
 
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination, Autoplay]);
 
 const WorksContainer = styled(Box)(({ theme }) => ({
   /*   backgroundColor: "lightblue", */
@@ -150,6 +150,10 @@ export const WorksSection = () => {
         slidesPerView={3}
         style={{ paddingBottom: 50 }}
         loop={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: true,
+        }}
         breakpoints={{
           "100": {
             slidesPerView: 1,
