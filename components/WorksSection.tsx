@@ -66,6 +66,34 @@ const ImageContainer = styled(Box)(({ theme }) => ({
       transform: "scale(1.1)",
     },
   },
+  [theme.breakpoints.down(1200)]: {
+    width: 300,
+    height: 300,
+  },
+  [theme.breakpoints.down(1050)]: {
+    width: 250,
+    height: 250,
+  },
+  [theme.breakpoints.down(880)]: {
+    width: 280,
+    height: 280,
+  },
+  [theme.breakpoints.down(670)]: {
+    width: 240,
+    height: 240,
+  },
+  [theme.breakpoints.down(670)]: {
+    width: 280,
+    height: 280,
+  },
+  [theme.breakpoints.down(450)]: {
+    width: 250,
+    height: 250,
+  },
+  [theme.breakpoints.down(350)]: {
+    width: 220,
+    height: 220,
+  },
 }));
 
 interface WorkSlideProps {
@@ -122,6 +150,20 @@ export const WorksSection = () => {
         slidesPerView={3}
         style={{ paddingBottom: 50 }}
         loop={true}
+        breakpoints={{
+          "100": {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          "650": {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          "880": {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+        }}
       >
         {works.map((w: any) => (
           <SwiperSlide key={w.title}>

@@ -13,7 +13,8 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const TitleContainer = styled(Box)(({ theme }) => ({
   marginTop: 20,
   marginBottom: 70,
-  animation: "fade 1.5s linear 400ms 1 normal",
+  opacity: 0,
+  animation: "fade 1.5s linear 400ms 1 normal forwards",
   [theme.breakpoints.down(750)]: {
     marginBottom: 50,
   },
