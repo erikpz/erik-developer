@@ -22,22 +22,26 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 const languageReducer = (state: InitialStateType, action: any) => {
+  const content = state.language === "EN" ? contentEN : contentES;
   switch (action.type) {
     case "TOGGLE":
       return {
         ...state,
-        language: state.language === "EN" ? "ES" : "EN",
-        content: state.language === "EN" ? contentEN : contentES,
+        language: state.language === "ES" ? "EN" : "ES",
+        content: content,
       };
     default:
       return state;
   }
 };
 
+const initFn: any = () => ({ language: "EN", content: contentEN });
+
 const LanguageProvider: FC = ({ children }: any) => {
   const [state, dispatch] = useReducer<Reducer<any, any>>(
     languageReducer,
-    initialState
+    initialState,
+    initFn
   );
   return (
     <LanguageContext.Provider value={{ state, dispatch }}>

@@ -5,11 +5,11 @@ import { LanguageProvider } from "../contexts/LanguageContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeConfig>
-      <LanguageProvider>
+    <LanguageProvider>
+      <ThemeConfig>
         <Component {...pageProps} />
-      </LanguageProvider>
-    </ThemeConfig>
+      </ThemeConfig>
+    </LanguageProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,32 +11,6 @@ import glapp from "../assets/glapp.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import { LanguageContext } from "../contexts/LanguageContext";
-
-const works = [
-  {
-    img: leviajere,
-    href: "https://leviajere.z20.web.core.windows.net",
-    title: "Le Viajere App",
-    subtitle: "Landing page",
-  },
-  {
-    img: kaan,
-    href: "https://www.kaantechnologies.com/",
-    title: "Ka'an Technologies",
-    subtitle: "Landing page",
-  },
-  {
-    img: glapp,
-    title: "Glapp",
-    subtitle: "Web application",
-  },
-  {
-    img: portfolio,
-    href: "https://erik-developer.vercel.app",
-    title: "Erik's Portfolio",
-    subtitle: "Landing page",
-  },
-];
 
 SwiperCore.use([Pagination, Autoplay]);
 
@@ -130,6 +104,35 @@ const WorkSlide: FC<WorkSlideProps> = (props) => {
 export const WorksSection = () => {
   const theme = useTheme();
   const langContext = useContext(LanguageContext);
+  const [works, setworks] = useState<any>([]);
+  useEffect(() => {
+    setworks([
+      {
+        img: leviajere,
+        href: "https://leviajere.z20.web.core.windows.net",
+        title: "Le Viajere App",
+        subtitle: "Landing page",
+      },
+      {
+        img: kaan,
+        href: "https://www.kaantechnologies.com/",
+        title: "Ka'an Technologies",
+        subtitle: "Landing page",
+      },
+      {
+        img: glapp,
+        title: "Glapp",
+        subtitle: "Web application",
+      },
+      {
+        img: portfolio,
+        href: "https://erik-developer.vercel.app",
+        title: "Erik's Portfolio",
+        subtitle: "Landing page",
+      },
+    ]);
+  }, []);
+
   return (
     <WorksContainer
       id="works"
