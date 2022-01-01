@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GitHub } from "@mui/icons-material";
 import { Box, IconButton, styled, Typography } from "@mui/material";
 import Link from "next/link";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 const FooterContainer = styled(Box)(({ theme }) => ({
   /* backgroundColor: "lightblue", */
@@ -35,6 +36,7 @@ const IconsContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const Footer = () => {
+  const langContext = useContext(LanguageContext);
   return (
     <>
       <Typography
@@ -42,7 +44,7 @@ export const Footer = () => {
         variant="h2"
         sx={{ marginBottom: { xs: 5, sm: 9 } }}
       >
-        Contacto
+        {langContext.state.content.contactSection.title}
       </Typography>
       <FooterContainer id="contact">
         <Link href="#erikdev">

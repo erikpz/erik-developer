@@ -109,9 +109,8 @@ export const MainSection = () => {
 
       <BioContainer>
         <BioText
-          title="¿Quién soy?"
-          text="Me llamo Erik, soy desarrollador web e ingeniero en sistemas
-            computacionales."
+          title={langContext.state.content.mainSection.who}
+          text={langContext.state.content.mainSection.whoDescription}
           align="left"
         />
 
@@ -120,8 +119,8 @@ export const MainSection = () => {
         </ImageContainer>
 
         <BioText
-          title="Servicios"
-          text="Desarrollo de sitios y aplicaciones web."
+          title={langContext.state.content.mainSection.services}
+          text={langContext.state.content.mainSection.servicesDescription}
           align="right"
         />
       </BioContainer>

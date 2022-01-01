@@ -12,8 +12,8 @@ interface LanguageContextType {
 }
 
 const initialState: InitialStateType = {
-  language: "EN",
-  content: contentEN,
+  language: "ES",
+  content: contentES,
 };
 
 const LanguageContext = createContext<LanguageContextType>({

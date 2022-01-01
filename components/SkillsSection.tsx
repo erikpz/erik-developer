@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
@@ -18,6 +18,7 @@ import express from "../assets/express.png";
 import next from "../assets/next.png";
 import mongodb from "../assets/mongodb.png";
 import mysql from "../assets/mysql.png";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 const techs = [
   { icon: react, name: "React Js" },
@@ -85,7 +86,7 @@ const LogoContainer = styled(Box, {
   transition: "0.3s transform",
   filter: "grayscale(100%)",
   animation: `heart 2.5s linear ${delay}ms infinite alternate`,
-  "& img":{
+  "& img": {
     borderRadius: 8,
   },
   [theme.breakpoints.down("lg")]: {
@@ -125,6 +126,7 @@ const TechnologyCard = (props: any) => {
 
 export const SkillsSection = () => {
   const [delays, setdelays] = useState<number[]>([]);
+  const langContext = useContext(LanguageContext);
 
   useEffect(() => {
     setdelays(animationDelays(techs.length));
@@ -137,7 +139,7 @@ export const SkillsSection = () => {
         variant="h2"
         sx={{ marginBottom: { xs: 5, sm: 9 } }}
       >
-        Habilidades
+        {langContext.state.content.skillsSection.title}
       </Typography>
       <TechsContainer>
         {techs.map((tech: any, i: number) => (

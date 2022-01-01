@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box } from "@mui/system";
 import { Grid, Typography } from "@mui/material";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 export const ExperienceSection = () => {
+  const langContext = useContext(LanguageContext);
   return (
     <Box
       sx={[
@@ -16,9 +18,9 @@ export const ExperienceSection = () => {
         variant="h2"
         sx={{ marginBottom: { xs: 3, sm: 9 } }}
       >
-        Educación y Experiencia
+        {langContext.state.content.experienceSection.title}
       </Typography>
-      <Grid container justifyContent="space-evenly" >
+      <Grid container justifyContent="space-evenly">
         <Grid item xs={12} sm={5} md={4}>
           <Typography
             variant="subtitle2"
@@ -27,13 +29,19 @@ export const ExperienceSection = () => {
             2015-2021
           </Typography>
           <Typography variant="h5">
-            Ingeniería en Sistemas Computacionales
+            {
+              langContext.state.content.experienceSection.education.engineer
+                .title
+            }
           </Typography>
           <Typography
             variant="subtitle1"
             sx={[(theme) => ({ color: theme.palette.grey[600] })]}
           >
-            Escuela Superior de Cómputo - IPN
+            {
+              langContext.state.content.experienceSection.education.engineer
+                .subtitle
+            }
           </Typography>
 
           <Typography
@@ -42,12 +50,20 @@ export const ExperienceSection = () => {
           >
             2011-2015
           </Typography>
-          <Typography variant="h5">Técnico en Computación</Typography>
+          <Typography variant="h5">
+            {
+              langContext.state.content.experienceSection.education.highschool
+                .title
+            }
+          </Typography>
           <Typography
             variant="subtitle1"
             sx={[(theme) => ({ color: theme.palette.grey[600] })]}
           >
-            Centro de Estudios Científicos y Tecnológicos 8 - IPN
+            {
+              langContext.state.content.experienceSection.education.highschool
+                .subtitle
+            }
           </Typography>
         </Grid>
         <Grid
@@ -63,13 +79,19 @@ export const ExperienceSection = () => {
           >
             2020-2021
           </Typography>
-          <Typography variant="h5">Desarrollador FrontEnd</Typography>
-          <Typography
-            variant="subtitle1"
-            sx={[(theme) => ({ color: theme.palette.grey[600] })]}
-          >
-            Ka&apos;an Technologies, Ciudad de México
-          </Typography>
+          {langContext.state.content.experienceSection.experience.map(
+            (e: any) => (
+              <Box key={e.title + e.subtitle}>
+                <Typography variant="h5">{e.title}</Typography>
+                <Typography
+                  variant="subtitle1"
+                  sx={[(theme) => ({ color: theme.palette.grey[600] })]}
+                >
+                  {e.subtitle}
+                </Typography>
+              </Box>
+            )
+          )}
         </Grid>
       </Grid>
     </Box>
