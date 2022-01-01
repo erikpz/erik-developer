@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import alien from "../assets/alien.jpg";
 import ipn from "../assets/ipn.png";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 const MainContainer = styled(Box)(({ theme }) => ({
   /* backgroundColor: "lightblue", */
@@ -91,6 +92,7 @@ const BioText: FC<{ title: string; text: string; align: string }> = (props) => {
 };
 
 export const MainSection = () => {
+  const langContext = useContext(LanguageContext);
   return (
     <MainContainer>
       <TitleContainer>
@@ -98,10 +100,10 @@ export const MainSection = () => {
           Erik Pizaña
         </Typography>
         <Typography variant="h2" align="center">
-          Desarrollador Web
+          {langContext.state.content.mainSection.title}
         </Typography>
         <Typography variant="h2" align="center">
-          Ingeniero en Sistemas Computacionales
+          {langContext.state.content.mainSection.subtitle}
         </Typography>
       </TitleContainer>
 

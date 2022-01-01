@@ -33,7 +33,7 @@ export const Menu: FC<MenuProps> = (props) => {
   }
   return (
     <MenuContainer open={props.open}>
-      <Link href="#">
+      <Link href="#works">
         <Typography
           sx={{
             fontSize: 20,

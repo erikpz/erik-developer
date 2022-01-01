@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,6 +10,7 @@ import kaan from "../assets/kaan.png";
 import glapp from "../assets/glapp.png";
 import "swiper/css";
 import "swiper/css/pagination";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 const works = [
   {
@@ -128,6 +129,7 @@ const WorkSlide: FC<WorkSlideProps> = (props) => {
 
 export const WorksSection = () => {
   const theme = useTheme();
+  const langContext = useContext(LanguageContext);
   return (
     <WorksContainer
       id="works"
@@ -142,7 +144,7 @@ export const WorksSection = () => {
         variant="h2"
         sx={{ marginBottom: { xs: 5, sm: 9 } }}
       >
-        Últimos trabajos
+        {langContext.state.content.worksSection.title}
       </Typography>
       <Swiper
         pagination={{ dynamicBullets: true, clickable: true }}

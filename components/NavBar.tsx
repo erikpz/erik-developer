@@ -7,10 +7,11 @@ import {
   Theme,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
-import { DarkMode, GitHub, LightMode } from "@mui/icons-material";
+import { DarkMode, GitHub, LightMode, Language } from "@mui/icons-material";
 import Link from "next/link";
 import { BurguerButton } from "./BurguerButton";
 import { ColorModeContext } from "../theme/ThemeConfig";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 interface NavBarProps {
   open: boolean;
@@ -92,6 +93,8 @@ export const NavBar: FC<NavBarProps> = (props) => {
   );
   const colorMode = useContext(ColorModeContext);
   const theme = useTheme();
+  const langContext = useContext(LanguageContext);
+  console.log(langContext)
   return (
     <NavBarContainer id="erikdev">
       {!underSmScreen && (
@@ -114,6 +117,11 @@ export const NavBar: FC<NavBarProps> = (props) => {
 
       {!underSmScreen ? (
         <IconsContainer>
+          <IconButton
+            onClick={() => langContext.dispatch({ type: "TOGGLE" })}
+          >
+            <Language />
+          </IconButton>
           <IconButton size="small" onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === "light" ? (
               <DarkMode sx={{ color: "text.primary" }} />
@@ -133,6 +141,9 @@ export const NavBar: FC<NavBarProps> = (props) => {
         </IconsContainer>
       ) : (
         <IconsContainer>
+          <IconButton>
+            <Language />
+          </IconButton>
           <IconButton
             size="small"
             onClick={colorMode.toggleColorMode}
