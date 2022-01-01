@@ -116,7 +116,12 @@ export const NavBar: FC<NavBarProps> = (props) => {
 
       {!underSmScreen ? (
         <IconsContainer>
-          <IconButton onClick={() => langContext.dispatch({ type: "TOGGLE" })}>
+          <IconButton
+            sx={(theme) => ({
+              color: theme.palette.text.primary,
+            })}
+            onClick={() => langContext.dispatch({ type: "TOGGLE" })}
+          >
             <Language />
           </IconButton>
           <IconButton size="small" onClick={colorMode.toggleColorMode}>
@@ -138,7 +143,12 @@ export const NavBar: FC<NavBarProps> = (props) => {
         </IconsContainer>
       ) : (
         <IconsContainer>
-          <IconButton onClick={() => langContext.dispatch({ type: "TOGGLE" })}>
+          <IconButton
+            sx={(theme) => ({
+              color: theme.palette.text.primary,
+            })}
+            onClick={() => langContext.dispatch({ type: "TOGGLE" })}
+          >
             <Language />
           </IconButton>
           <IconButton
