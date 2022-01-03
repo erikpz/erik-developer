@@ -12,8 +12,8 @@ interface LanguageContextType {
 }
 
 const initialState: InitialStateType = {
-  language: "ES",
-  content: contentES,
+  language: "EN",
+  content: contentEN,
 };
 
 const LanguageContext = createContext<LanguageContextType>({
@@ -22,26 +22,22 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 const languageReducer = (state: InitialStateType, action: any) => {
-  const content = state.language === "EN" ? contentEN : contentES;
   switch (action.type) {
     case "TOGGLE":
       return {
         ...state,
-        language: state.language === "ES" ? "EN" : "ES",
-        content: content,
+        language: state.language === "EN" ? "ES" : "EN",
+        content: state.language === "EN" ? contentEN : contentES,
       };
     default:
       return state;
   }
 };
 
-const initFn: any = () => ({ language: "EN", content: contentEN });
-
 const LanguageProvider: FC = ({ children }: any) => {
   const [state, dispatch] = useReducer<Reducer<any, any>>(
     languageReducer,
-    initialState,
-    initFn
+    initialState
   );
   return (
     <LanguageContext.Provider value={{ state, dispatch }}>
