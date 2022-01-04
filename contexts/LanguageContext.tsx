@@ -1,4 +1,11 @@
-import { createContext, FC, useReducer, Dispatch, Reducer } from "react";
+import {
+  createContext,
+  FC,
+  useReducer,
+  Dispatch,
+  Reducer,
+  useEffect,
+} from "react";
 import { contentEN, contentES } from "./content";
 
 interface InitialStateType {
@@ -39,6 +46,9 @@ const LanguageProvider: FC = ({ children }: any) => {
     languageReducer,
     initialState
   );
+  useEffect(() => {
+    dispatch({ type: "TOGGLE" });
+  }, []);
   return (
     <LanguageContext.Provider value={{ state, dispatch }}>
       {children}

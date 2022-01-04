@@ -114,23 +114,29 @@ export const NavBar: FC<NavBarProps> = (props) => {
         </Logo>
       </LogoContainer>
 
-      {!underSmScreen ? (
-        <IconsContainer>
-          <IconButton
-            sx={(theme) => ({
-              color: theme.palette.text.primary,
-            })}
-            onClick={() => langContext.dispatch({ type: "TOGGLE" })}
-          >
-            <Language />
-          </IconButton>
-          <IconButton size="small" onClick={colorMode.toggleColorMode}>
-            {theme.palette.mode === "light" ? (
-              <DarkMode sx={{ color: "text.primary" }} />
-            ) : (
-              <LightMode sx={{ color: "text.primary" }} />
-            )}
-          </IconButton>
+      <IconsContainer>
+        <IconButton
+          sx={(theme) => ({
+            color: theme.palette.text.primary,
+          })}
+          onClick={() => langContext.dispatch({ type: "TOGGLE" })}
+        >
+          <Language />
+        </IconButton>
+        <IconButton
+          size="small"
+          onClick={colorMode.toggleColorMode}
+          sx={{ marginRight: underSmScreen ? 1 : 0 }}
+        >
+          {theme.palette.mode === "light" ? (
+            <DarkMode sx={{ color: "text.primary" }} />
+          ) : (
+            <LightMode sx={{ color: "text.primary" }} />
+          )}
+        </IconButton>
+        {underSmScreen ? (
+          <BurguerButton open={open} handleOpen={handleOpen} />
+        ) : (
           <a
             href="https://github.com/erikpz"
             target="_blank"
@@ -140,31 +146,8 @@ export const NavBar: FC<NavBarProps> = (props) => {
               <GitHub sx={{ color: "text.primary" }} />
             </IconButton>
           </a>
-        </IconsContainer>
-      ) : (
-        <IconsContainer>
-          <IconButton
-            sx={(theme) => ({
-              color: theme.palette.text.primary,
-            })}
-            onClick={() => langContext.dispatch({ type: "TOGGLE" })}
-          >
-            <Language />
-          </IconButton>
-          <IconButton
-            size="small"
-            onClick={colorMode.toggleColorMode}
-            sx={{ marginRight: 1 }}
-          >
-            {theme.palette.mode === "light" ? (
-              <DarkMode sx={{ color: "text.primary" }} />
-            ) : (
-              <LightMode sx={{ color: "text.primary" }} />
-            )}
-          </IconButton>
-          <BurguerButton open={open} handleOpen={handleOpen} />
-        </IconsContainer>
-      )}
+        )}
+      </IconsContainer>
     </NavBarContainer>
   );
 };
