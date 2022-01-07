@@ -74,9 +74,9 @@ const IconsContainer = styled(Box)(({ theme }) => ({
 
 const NavLink = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
-  /* margin: "0px 8px", */
   padding: "0 10px",
   lineHeight: "1.75",
+  transition: 'none',
   "&:hover": {
     cursor: "pointer",
     backgroundColor: theme.palette.text.primary,

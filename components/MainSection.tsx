@@ -52,6 +52,10 @@ const ImageContainer = styled(Box)(({ theme }) => ({
     width: 250,
     height: 400,
   },
+  [theme.breakpoints.down(450)]: {
+    width: 190,
+    height: 330,
+  },
   [theme.breakpoints.down(750)]: {
     margin: "40px 0",
   },
