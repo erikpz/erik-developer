@@ -1,6 +1,7 @@
 import { Box, styled, Typography } from "@mui/material";
 import Link from "next/link";
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 interface MenuProps {
   open: boolean;
@@ -28,6 +29,7 @@ const MenuContainer = styled(Box, {
 }));
 
 export const Menu: FC<MenuProps> = (props) => {
+  const langCtx = useContext(LanguageContext);
   if (!props.open) {
     return null;
   }
@@ -43,7 +45,7 @@ export const Menu: FC<MenuProps> = (props) => {
           }}
           onClick={() => props.handleOpen(false)}
         >
-          Trabajos
+          {langCtx.state.language === "EN" ? "Works" : "Trabajos"}
         </Typography>
       </Link>
       <Link href="#contact">
@@ -56,7 +58,7 @@ export const Menu: FC<MenuProps> = (props) => {
           }}
           onClick={() => props.handleOpen(false)}
         >
-          Contacto
+          {langCtx.state.language === "EN" ? "Contact" : "Contacto"}
         </Typography>
       </Link>
     </MenuContainer>

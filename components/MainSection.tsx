@@ -119,7 +119,7 @@ export const MainSection = () => {
         />
 
         <ImageContainer>
-          <Image src={alien} priority />
+          <Image src={alien} priority alt="Erik" />
         </ImageContainer>
 
         <BioText
@@ -158,7 +158,7 @@ export const MainSection = () => {
             }),
           ]}
         >
-          <Image src={ipn} priority />
+          <Image src={ipn} priority alt="IPN" />
         </Box>
         <Typography align="center" variant="caption" color="secondary">
           Escuela Superior de Cómputo
