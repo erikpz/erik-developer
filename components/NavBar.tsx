@@ -76,7 +76,7 @@ const NavLink = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   padding: "0 10px",
   lineHeight: "1.75",
-  transition: 'none',
+  transition: "none",
   "&:hover": {
     cursor: "pointer",
     backgroundColor: theme.palette.text.primary,

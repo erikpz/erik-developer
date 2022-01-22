@@ -45,7 +45,7 @@ export const Menu: FC<MenuProps> = (props) => {
           }}
           onClick={() => props.handleOpen(false)}
         >
-          {langCtx.state.language === "EN" ? "Works" : "Trabajos"}
+          {langCtx.state.language !== "EN" ? "Works" : "Trabajos"}
         </Typography>
       </Link>
       <Link href="#contact">
@@ -58,7 +58,7 @@ export const Menu: FC<MenuProps> = (props) => {
           }}
           onClick={() => props.handleOpen(false)}
         >
-          {langCtx.state.language === "EN" ? "Contact" : "Contacto"}
+          {langCtx.state.language !== "EN" ? "Contact" : "Contacto"}
         </Typography>
       </Link>
     </MenuContainer>
