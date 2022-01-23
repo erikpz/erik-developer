@@ -2,7 +2,6 @@ import React, { FC, useContext } from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
-import alien from "../assets/alien.jpg";
 import me from "../assets/photo.jpg";
 import ipn from "../assets/ipn.png";
 import { LanguageContext } from "../contexts/LanguageContext";

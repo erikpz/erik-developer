@@ -7,7 +7,13 @@ import {
   Theme,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
-import { DarkMode, GitHub, LightMode, Language } from "@mui/icons-material";
+import {
+  DarkMode,
+  GitHub,
+  LightMode,
+  Language,
+  LinkedIn,
+} from "@mui/icons-material";
 import Link from "next/link";
 import { BurguerButton } from "./BurguerButton";
 import { ColorModeContext } from "../theme/ThemeConfig";
@@ -137,15 +143,26 @@ export const NavBar: FC<NavBarProps> = (props) => {
         {underSmScreen ? (
           <BurguerButton open={open} handleOpen={handleOpen} />
         ) : (
-          <a
-            href="https://github.com/erikpz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <IconButton size="small">
-              <GitHub sx={{ color: "text.primary" }} />
-            </IconButton>
-          </a>
+          <>
+            <a
+              href="https://github.com/erikpz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconButton size="small">
+                <GitHub sx={{ color: "text.primary" }} />
+              </IconButton>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/erik-pizana/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconButton size="small">
+                <LinkedIn sx={{ color: "text.primary" }} />
+              </IconButton>
+            </a>
+          </>
         )}
       </IconsContainer>
     </NavBarContainer>

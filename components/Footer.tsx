@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GitHub } from "@mui/icons-material";
+import { GitHub, LinkedIn } from "@mui/icons-material";
 import { Box, IconButton, styled, Typography } from "@mui/material";
 import Link from "next/link";
 import { LanguageContext } from "../contexts/LanguageContext";
@@ -61,6 +61,15 @@ export const Footer = () => {
           >
             <IconButton size="small">
               <GitHub sx={{ color: "text.primary" }} />
+            </IconButton>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/erik-pizana/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconButton size="small">
+              <LinkedIn sx={{ color: "text.primary" }} />
             </IconButton>
           </a>
         </IconsContainer>
