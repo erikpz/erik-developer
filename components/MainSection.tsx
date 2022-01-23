@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import alien from "../assets/alien.jpg";
+import me from "../assets/photo.jpg";
 import ipn from "../assets/ipn.png";
 import { LanguageContext } from "../contexts/LanguageContext";
 
@@ -119,7 +120,7 @@ export const MainSection = () => {
         />
 
         <ImageContainer>
-          <Image src={alien} priority alt="Erik" />
+          <Image src={me} priority alt="Erik" />
         </ImageContainer>
 
         <BioText
