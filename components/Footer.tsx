@@ -27,8 +27,8 @@ const IconsContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
     alignItems: "center",
+    justifyContent: "center",
   },
   [theme.breakpoints.up("sm")]: {
     marginRight: "-5px",
